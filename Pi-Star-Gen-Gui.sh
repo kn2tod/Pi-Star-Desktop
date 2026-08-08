@@ -99,8 +99,8 @@
 #
 #  Restartable/Rerunnable (generaly/mostly?)
 
-np=":"    # supress "continue" prompts (for selected steps)
-opt=":"   # list/suppress option
+np=": "    # supress "continue" prompts (for selected steps)
+opt=": "   # list/suppress option
 
 pibase=${1:-mark}
 pibase=${pibase,,[A-Z]}
@@ -311,7 +311,7 @@ echo "==== Create dashboard userid/password: ===================================
 sudo apt install apache2-utils -y
 echo "--"
 sudo htpasswd -bc /var/www/.htpasswd pi-star raspberry
-sudo chown www-data:www-data /var/www/htpasswd
+sudo chown www-data:www-data /var/www/.htpasswd
 echo "--"
 cat /var/www/.htpasswd
 echo ""
@@ -520,7 +520,6 @@ tmpfs\t\t\t\/var\/lib\/sudo\t\ttmpfs\tnodev,noatime,nosuid,mode=1777,size=16k\t\
 tmpfs\t\t\t\/var\/lib\/dhcpcd\t\ttmpfs\tnodev,noatime,nosuid,mode=1777,size=32k\t\t0\t0\
 #tmpfs\t\t\t\/var\/lib\/vnstat\t\ttmpfs\tnodev,noatime,nosuid,mode=1777,size=4m\t\t0\t0\
 tmpfs\t\t\t\/var\/lib\/logrotate\ttmpfs\tnodev,noatime,nosuid,mode=0755,size=16k\t\t0\t0\
-tmpfs\t\t\t\/var\/log\/nginx\t\ttmpfs\tnodev,noatime,nosuid,mode=0755,size=96k\t\t0\t0\
 tmpfs\t\t\t\/var\/lib\/nginx\/body\ttmpfs\tnodev,noatime,nosuid,mode=1700,size=1m\t\t0\t0\
 tmpfs\t\t\t\/var\/lib\/php\/sessions\ttmpfs\tnodev,noatime,nosuid,mode=0777,size=128k\t0\t0\
 tmpfs\t\t\t\/var\/lib\/misc\t\ttmpfs\tnodev,noatime,nosuid,mode=1777,size=16k\t\t0\t0\
@@ -856,8 +855,8 @@ sudo systemctl stop    smbd.service
 sudo systemctl mask    smbd.service
 #echo ""
 #sudo smbstatus -v
-${opt}echo ""
-${opt}testparm -s # -v
+${opt} echo ""
+${opt} testparm -s # -v
 
 read -p "-- press any key to continue --" ipq
 
